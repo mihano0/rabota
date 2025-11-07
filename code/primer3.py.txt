@@ -1,0 +1,12 @@
+def permute(s, left, right):
+    if left == right:
+        print(''.join(s))
+    else:
+        for i in range(left, right + 1):
+            s[left], s[i] = s[i], s[left]  # Обмен символов
+            permute(s, left + 1, right)    # Рекурсивный вызов
+            s[left], s[i] = s[i], s[left]  # Возврат на исходные позиции
+
+# Пример использования
+str = "ABC"
+permute(list(str), 0, len(str) - 1)

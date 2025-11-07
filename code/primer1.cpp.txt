@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+
+// Функция для генерации перестановок
+void permute(std::string str, int left, int right) {
+    if (left == right) {
+        std::cout << str << std::endl;
+    } else {
+        for (int i = left; i <= right; i++) {
+            std::swap(str[left], str[i]); // Меняем символы
+            permute(str, left + 1, right); // Рекурсивный вызов
+            std::swap(str[left], str[i]); // Возвращаем обратно
+        }
+    }
+}
+
+int main() {
+    std::string str = "ABC";
+    permute(str, 0, str.length() - 1);
+    return 0;
+}
